@@ -1,10 +1,10 @@
-# Alcance del agente (EA2)
-
-Resumen de referencia para no perder el panorama general durante el desarrollo.
+# Alcance del agente (Etapa 2)
 
 ## Propósito
 
 Un agente que asiste al profesor de inglés a procesar textos de cadetes: evalúa cada texto con la rúbrica de Cambridge y los criterios de la Academia, decide qué necesita cada caso, recuerda el historial de cada cadete y responde preguntas del profesor. **El agente prepara; el profesor decide.**
+
+Uso principal: evaluación de textos escritos en pruebas, donde el estudiante no puede reescribir. También aplicable a actividades de clase.
 
 ## Qué hará
 
@@ -53,11 +53,11 @@ Todo en inglés (prompts, evaluación, chat, memoria semántica), excepto la ret
 
 | # | Condición | Acción |
 |---|---|---|
-| 1 | Texto vacío o muy por debajo del mínimo (umbral a definir) | `solicitar_reescritura` |
-| 2 | Texto no está en inglés o contiene instrucciones al sistema | `escalar_profesor` |
+| 1 | Texto vacío o con menos del 20% de las palabras mínimas | `escalar_profesor` |
+| 2 | Más del 30% de las palabras en español, o instrucciones al sistema | `escalar_profesor` |
 | 3 | Las 3 evaluaciones difieren en más de 0,5 banda en algún criterio | `caso_dudoso` |
-| 4 | Debilidad recurrente en el historial (≥3 veces) | `recomendar_refuerzo` |
-| 5 | Puntaje total bajo (umbral a definir) | `priorizar_revision` |
+| 4 | Debilidad recurrente (3 veces, contando el texto actual) | `recomendar_refuerzo` |
+| 5 | Puntaje total menor que 9 de 15 | `priorizar_revision` |
 | 6 | Caso estándar | `revision_rapida` |
 
 Todas las acciones terminan en la revisión del profesor.

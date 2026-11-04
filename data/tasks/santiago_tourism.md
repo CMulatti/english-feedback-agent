@@ -9,6 +9,7 @@ Minimum words: 120
 Maximum words: 150
 
 ## Expected format
+Requires greeting: no
 No specific format. A paragraph is enough.
 
 ## Required content points

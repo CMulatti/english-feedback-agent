@@ -16,7 +16,8 @@ Minimum words: 100
 Maximum words: 150
 
 ## Expected format
-Reply to a message: greeting to Jim (e.g. "Dear Jim", "Hello Jim", "Hi", "Hi Jim") and an ending (e.g. "Take care", "Bye", "Best wishes" "See you").
+Requires greeting: yes
+Reply to a message: any greeting to Jim (e.g. "Dear Jim", "Hello Jim", "Hi", "Hi Jim") and an ending (e.g. "Take care", "Bye", "Best wishes" "See you").
 
 ## Required content points
 1. [essential] Daily routine
@@ -42,5 +43,5 @@ in the morning, in the afternoon, in the evening, at night, every day
   study, study military subjects, have patrol duty, have fireguard duty, do a ruck march, be on duty.
 - Places: barracks, mess hall, Alpatacal Courtyard, formation area, classroom, library, gym
 - Uniforms: Army combat uniform, dress uniform, ACU
-- Military vocabulary: see vocabulary/military.md
+
 

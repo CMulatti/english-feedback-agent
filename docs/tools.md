@@ -2,6 +2,7 @@
 
 Cada tool tiene un contrato: qué recibe y qué devuelve. Si se respeta el contrato, el interior de una tool puede cambiar sin afectar al resto del agente.
 
+Todas las tools registran su ejecución en el registro de eventos (hora, duración, resultado y tipo de error), para la Etapa 3.
 
 ## Resumen
 
@@ -62,9 +63,15 @@ Cada tool tiene un contrato: qué recibe y qué devuelve. Si se respeta el contr
 - **Solo se ejecuta** cuando el profesor presiona Confirmar.
 
 ### 7. `generar_retroalimentacion`
-- **Entrada:** `texto: str`, `task_id: str`, `puntajes_finales: dict`, `justificacion: str`, `razones: dict`
+- **Entrada:** `texto: str`, `task_id: str`, `puntajes_finales: dict`, `justificacion: str`, `razones: dict`, `progreso: dict`
+- **`progreso`** (calculado por código a partir de `consultar_historial`):
+  - `tiene_historial` (bool)
+  - `debilidades_superadas`: estaban en la evaluación anterior y ya no aparecen
+  - `debilidades_persistentes`: aparecen en ambas
 - **Salida:** `str`, en español y de máximo 200 palabras.
 - **Solo se ejecuta** después de confirmar, a partir de los puntajes finales del profesor.
+- **Reglas del prompt:** si una razón del profesor contradice la justificación, prevalece la razón del profesor. El progreso se menciona solo si `tiene_historial` es verdadero y solo a partir de las debilidades, nunca comparando puntajes.
+- **Verificación por código:** 200 palabras o menos, en español y sin puntajes ni bandas. Si falla, se regenera una vez y se registra el error.
 
 ## Cómo se conectan
 
@@ -73,7 +80,7 @@ Cada tool tiene un contrato: qué recibe y qué devuelve. Si se respeta el contr
 | `consultar_tarea` | `revisar_texto` (extensión, saludo, vocabulario) |
 | `revisar_texto` | `evaluar_texto` (hechos para el prompt) y el planner (reglas 1, 2 y 4) |
 | `buscar_contexto` | `evaluar_texto` (casos similares como ejemplos) y el chat |
-| `consultar_historial` | El planner (regla 4) y el chat |
+| `consultar_historial` | El planner (regla 4), `generar_retroalimentacion` (progreso) y el chat |
 | `evaluar_texto` | El planner (reglas 3 y 5) y el panel de revisión |
 | Confirmación del profesor | `guardar_evaluacion` y `generar_retroalimentacion` |
 

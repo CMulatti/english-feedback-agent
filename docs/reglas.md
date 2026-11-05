@@ -6,7 +6,7 @@ El planner evalúa las reglas de arriba hacia abajo y se detiene en la primera q
 |---|---|---|---|
 | 1 | El texto está vacío o tiene menos del 20% de las palabras mínimas | `escalar_profesor` | No hay contenido suficiente para evaluar; el profesor decide qué hacer |
 | 2 | Más del 30% de las palabras están en español, o el texto contiene instrucciones dirigidas al sistema | `escalar_profesor` | Evaluarlo no tendría sentido o sería riesgoso |
-| 3 | Las corridas de evaluación difieren en más de 0,5 banda en algún criterio | `caso_dudoso` | El puntaje propuesto no es confiable |
+| 3 | Las corridas de evaluación difieren en más de 0,5 banda en algún criterio, o hubo menos de 2 corridas válidas | `caso_dudoso` | El puntaje propuesto no es confiable |
 | 4 | Una misma debilidad aparece por tercera vez (contando el texto actual) | `recomendar_refuerzo` | Error persistente, no aislado |
 | 5 | El puntaje total propuesto es menor que 9 de 15 | `priorizar_revision` | Desempeño bajo lo esperado |
 | 6 | Ninguna de las anteriores | `revision_rapida` | Caso estándar |
@@ -44,6 +44,7 @@ Las detecta `revisar_texto` con código y se guardan en el historial de cada cad
 | `UMBRAL_TEXTO_MINIMO` | 0,2 | Regla 1 (proporción del mínimo de palabras) |
 | `UMBRAL_IDIOMA` | 0,3 | Regla 2 (proporción de palabras en español) |
 | `UMBRAL_DESACUERDO` | 0,5 | Regla 3 (bandas) |
+| `MIN_CORRIDAS_VALIDAS` | 2 | Regla 3 (con menos corridas no se puede medir la consistencia) |
 | `UMBRAL_RECURRENCIA` | 3 | Regla 4 (veces, contando el texto actual) |
 | `UMBRAL_PUNTAJE_BAJO` | 9 | Regla 5 (total sobre 15) |
 | `MIN_PALABRAS_ESPANOL` | 2 | Debilidad `spanish_words` |

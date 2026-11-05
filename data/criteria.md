@@ -29,6 +29,9 @@
   using correct basic words instead of the taught vocabulary is not an error,
   but it shows less command of the course content.
 - If no taught vocabulary appears, Language cannot exceed band 3.
+- Band 5 requires both control and range: everyday vocabulary and a
+  variety of simple structures. A text with few errors that repeats
+  the same basic words and structures corresponds to band 3 or 4.
 
 ## Interaction between criteria
 - Each error is penalized only under the criterion it belongs to.

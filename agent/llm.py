@@ -8,6 +8,7 @@ Conexión con el modelo de lenguaje.
 
 import os
 import time
+import warnings
 
 from dotenv import load_dotenv
 
@@ -24,6 +25,9 @@ def crear_llm(temperature=0.2):
     # max_retries=0: los reintentos los hace invocar_llm, para poder registrar cada uno
     if proveedor == "google":
         from langchain_google_genai import ChatGoogleGenerativeAI
+        # Algunos modelos Gemini (como gemini-3.5-flash-lite) ignoran la temperatura y usan
+        # valores fijos. Ocultamos ese aviso; la variabilidad se controla con N_EVALUACIONES.
+        warnings.filterwarnings("ignore", message=".*fixed sampling defaults.*")
         return ChatGoogleGenerativeAI(model=modelo, temperature=temperature, max_retries=0)
     if proveedor == "anthropic":
         from langchain_anthropic import ChatAnthropic   # requiere: pip install langchain-anthropic

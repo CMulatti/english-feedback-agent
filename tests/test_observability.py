@@ -1,28 +1,11 @@
 """Tests del registro de ejecución y de invocar_llm (sin llamar a un modelo real)."""
 
 import pytest
-from langchain_core.messages import AIMessage
 
 from agent.observability import registrar_evento, obtener_eventos
 from agent.llm import invocar_llm, clasificar_error
 from agent.tools.consultar_tarea import consultar_tarea
-
-
-class LLMFalso:
-    """Imita un modelo: devuelve las respuestas de la lista, en orden.
-    Si un elemento es una excepción, la lanza en vez de responder."""
-    model = "modelo-falso"
-
-    def __init__(self, respuestas):
-        self.respuestas = list(respuestas)
-
-    def invoke(self, mensajes):
-        respuesta = self.respuestas.pop(0)
-        if isinstance(respuesta, Exception):
-            raise respuesta
-        return AIMessage(content=respuesta,
-                         usage_metadata={"input_tokens": 50, "output_tokens": 10,
-                                         "total_tokens": 60})
+from tests.fakes import LLMFalso
 
 
 def test_registrar_y_leer_evento():

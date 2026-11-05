@@ -1,0 +1,34 @@
+[
+  {
+    "task_id": "cadet_routine",
+    "texto": "Hi Jim! My day starts at 6 am. I put on my uniform and form up with my platoon. Then we have breakfast in the mess hall. After that I have classes until lunch. In the afternoon I do PT in the gym. At night I study in the library and I go to bed at 10 pm.",
+    "propuesto": {"Content": 3, "Organization": 2.5, "Language": 3},
+    "final": {"Content": 3, "Organization": 3, "Language": 3},
+    "razones": {"Organization": "'Hi Jim!' is an informal but valid greeting; no penalty for format."},
+    "debilidades": ["below_length"]
+  },
+  {
+    "task_id": "cadet_routine",
+    "texto": "Dear Jim, Every day I wake up at 6:00 and I make my bed. I go to the formation area and then to the mess hall. In the morning I have English and math. After lunch I train in the gym and later I study. I go to sleep in the barracks. Life here is hard but I like it.",
+    "propuesto": {"Content": 3, "Organization": 3.5, "Language": 3.5},
+    "final": {"Content": 4, "Organization": 3.5, "Language": 3.5},
+    "razones": {"Content": "Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered."},
+    "debilidades": ["below_length"]
+  },
+  {
+    "task_id": "cadet_routine",
+    "texto": "Hello Jim, I wake up at 6 am. I go to the courtyard. I have breakfast in the mess hall. I go to the classroom. I have classes. I go to the mess hall. I have lunch. I go to the gym. I have dinner. I go to the barracks. I sleep.",
+    "propuesto": {"Content": 3, "Organization": 2.5, "Language": 4.5},
+    "final": {"Content": 3, "Organization": 2.5, "Language": 3},
+    "razones": {"Language": "Few errors, but the same basic structures are repeated throughout; limited range corresponds to band 3, not 5."},
+    "debilidades": ["below_length"]
+  },
+  {
+    "task_id": "santiago_tourism",
+    "texto": "Santiago is a big city. I recommend La Serena because it has beautiful beaches and the people are friendly. In La Serena you can go to the beach, try the local food and visit the lighthouse. It is cheaper and safer than Santiago and the weather is warmer. La Serena is the best city for tourists in Chile.",
+    "propuesto": {"Content": 4, "Organization": 3.5, "Language": 3.5},
+    "final": {"Content": 3, "Organization": 3.5, "Language": 3.5},
+    "razones": {"Content": "Santiago is described in only one short sentence; the description of Santiago is underdeveloped."},
+    "debilidades": ["below_length"]
+  }
+]

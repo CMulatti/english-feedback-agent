@@ -36,3 +36,7 @@ MAX_REINTENTOS = 4        # intentos por llamada al LLM si el modelo está satur
 ESPERA_REINTENTO = 5     # segundos de espera entre intentos
 # Nota: gemini-3.5-flash-lite ignora la temperatura (usa valores fijos),
 # por eso la consistencia depende de las N_EVALUACIONES corridas y su mediana.
+
+# ---------- Memoria semántica (Chroma) ----------
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"   # gratuito y local (~80 MB)
+K_RESULTADOS = 2          # fragmentos que devuelve cada búsqueda

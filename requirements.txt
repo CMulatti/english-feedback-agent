@@ -6,3 +6,6 @@ langchain
 langchain-core
 langchain-google-genai
 pytest
+langchain-chroma
+langchain-huggingface
+sentence-transformers

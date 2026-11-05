@@ -2,10 +2,13 @@
 
 from langchain_core.tools import tool
 
+from agent.observability import registrar_tool
+
 from agent.memory.long_term import obtener_historial
 
 
 @tool
+@registrar_tool
 def consultar_historial(cadete_id: str, limite: int = 10) -> list:
     """Return a cadet's previous confirmed assessments, most recent first.
     Each item has the date, task, final scores, weaknesses detected, the
@@ -20,5 +23,3 @@ def consultar_historial(cadete_id: str, limite: int = 10) -> list:
 if __name__ == "__main__":
     from pprint import pprint
     pprint(consultar_historial.invoke({"cadete_id": "CDT-004"}))
-
-    

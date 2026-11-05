@@ -1,21 +1,11 @@
 """
 Tests de la memoria de largo plazo. Ejecutar con: pytest -v
 
-Usan una base de datos temporal, para no mezclar datos de prueba
-con el historial real de los cadetes.
+La base de datos temporal se configura en tests/conftest.py.
 """
 
-import pytest
-
-from config import settings
 from agent.memory.long_term import guardar_evaluacion, obtener_historial
 from agent.tools.consultar_historial import consultar_historial
-
-
-@pytest.fixture(autouse=True)
-def base_temporal(tmp_path, monkeypatch):
-    """Antes de cada test, apunta DB_PATH a un archivo nuevo en una carpeta temporal."""
-    monkeypatch.setattr(settings, "DB_PATH", tmp_path / "test.db")
 
 
 def evaluacion_de_prueba(cadete_id, fecha, debilidades, final_organization=3):

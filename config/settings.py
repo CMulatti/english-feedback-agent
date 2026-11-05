@@ -1,4 +1,6 @@
 """
+settings.py
+
 Configuración central del agente: rutas y umbrales.
 Los números que usan varias partes del código viven aquí, para cambiarlos en un solo lugar.
 """
@@ -6,7 +8,7 @@ Los números que usan varias partes del código viven aquí, para cambiarlos en 
 from pathlib import Path
 
 # ---------- Rutas ----------
-
+# settings.py está en config/, así que la raíz del proyecto es dos niveles arriba
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATA_DIR = BASE_DIR / "data"
@@ -27,3 +29,7 @@ UMBRAL_DESACUERDO = 0.5       # regla 3: diferencia máxima entre corridas (band
 UMBRAL_RECURRENCIA = 3        # regla 4: veces, contando el texto actual
 UMBRAL_PUNTAJE_BAJO = 9       # regla 5: total sobre 15
 MIN_PALABRAS_ESPANOL = 2      # debilidad spanish_words
+
+# ---------- LLM ----------
+MAX_REINTENTOS = 3        # intentos por llamada al LLM si el modelo está saturado
+ESPERA_REINTENTO = 10     # segundos de espera entre intentos

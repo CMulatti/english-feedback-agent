@@ -9,6 +9,8 @@ import re
 
 from langchain_core.tools import tool
 
+from agent.observability import registrar_tool
+
 from config import settings
 from retrieval import load_task, load_extra_vocabulary
 from checks import count_words, find_taught_vocabulary
@@ -137,6 +139,7 @@ def revisar(texto, task_id):
 # ---------- La tool ----------
 
 @tool
+@registrar_tool
 def revisar_texto(texto: str, task_id: str) -> dict:
     """Check a student's text with exact, rule-based code (no AI): word count
     against the task's expected length, taught vocabulary found, whether the

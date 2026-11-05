@@ -9,6 +9,8 @@ import re
 
 from langchain_core.tools import tool
 
+from agent.observability import registrar_tool
+
 from config.settings import TASKS_DIR
 from retrieval import get_field
 from checks import get_section, get_task_vocabulary
@@ -84,10 +86,11 @@ def leer_ficha(task_id):
 # ---------- La tool ----------
 
 @tool
+@registrar_tool
 def consultar_tarea(task_id: str) -> dict:
     """Return the task sheet for a writing task: instructions, expected length,
     whether a greeting is required, content points (essential or accessory),
-    target grammar and taught vocabulary. We use it to know what a
+    target grammar and taught vocabulary. Use it when you need to know what a
     task expects. Valid task_id values are file names in data/tasks/, such as
     'cadet_routine' or 'santiago_tourism'."""
     return leer_ficha(task_id)

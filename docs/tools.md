@@ -13,7 +13,7 @@ Todas las tools registran su ejecución en el registro de eventos (hora, duraci�
 | 3 | `evaluar_texto` | `texto`, `task_id`, `revision`, `casos_similares` | Puntajes de cada corrida, mediana y desacuerdos | Reglas 3 y 5 |
 | 4 | `consultar_historial` | `cadete_id` | Evaluaciones anteriores | Regla 4 |
 | 5 | `buscar_contexto` | `consulta`, `task_id` (opcional) | Fragmentos de criterios y casos similares | RAG semántico y chat |
-| 6 | `guardar_evaluacion` | Datos de la evaluación confirmada | Confirmación | Después de confirmar |
+| 6 | `guardar_evaluacion` | Datos de la evaluación confirmada, incluido el texto | Confirmación o problemas | Después de confirmar |
 | 7 | `generar_retroalimentacion` | `texto`, `task_id`, evaluación final | Retroalimentación en español | Después de confirmar |
 
 ## Detalle
@@ -57,8 +57,8 @@ Todas las tools registran su ejecución en el registro de eventos (hora, duraci�
 - **Memoria:** semántica (Chroma). Si se indica `task_id`, los casos se filtran por tarea antes de buscar por similitud.
 
 ### 6. `guardar_evaluacion`
-- **Entrada:** `cadete_id`, `task_id`, `corridas`, `puntajes_propuestos`, `puntajes_finales`, `razones` (por criterio ajustado), `accion`, `debilidades`, `modelo`, `version_prompt`
-- **Salida:** `{"ok": True, "evaluacion_id": ...}`
+- **Entrada:** `cadete_id`, `task_id`, `texto`, `corridas`, `puntajes_propuestos`, `puntajes_finales`, `razones` (por criterio ajustado), `accion`, `debilidades`, `modelo`, `version_prompt`
+- **Salida:** `{"ok": True, "evaluacion_id": ...}`, o `{"error": ..., "problemas": [...]}` si un puntaje no es válido o un ajuste no tiene razón.
 - **Escribe en:** SQLite (registro completo) y Chroma (resumen del caso en inglés, generado por código).
 - **Solo se ejecuta** cuando el profesor presiona Confirmar.
 
@@ -68,7 +68,7 @@ Todas las tools registran su ejecución en el registro de eventos (hora, duraci�
   - `tiene_historial` (bool)
   - `debilidades_superadas`: estaban en la evaluación anterior y ya no aparecen
   - `debilidades_persistentes`: aparecen en ambas
-- **Salida:** `str`, en español y de máximo 200 palabras.
+- **Salida:** `{"retroalimentacion": str, "advertencias": list}`: el texto en español (máximo 200 palabras) y los problemas que la verificación no pudo resolver.
 - **Solo se ejecuta** después de confirmar, a partir de los puntajes finales del profesor.
 - **Reglas del prompt:** si una razón del profesor contradice la justificación, prevalece la razón del profesor. El progreso se menciona solo si `tiene_historial` es verdadero y solo a partir de las debilidades, nunca comparando puntajes.
 - **Verificación por código:** 200 palabras o menos, en español y sin puntajes ni bandas. Si falla, se regenera una vez y se registra el error.

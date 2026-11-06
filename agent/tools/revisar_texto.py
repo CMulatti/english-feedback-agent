@@ -12,8 +12,8 @@ from langchain_core.tools import tool
 from agent.observability import registrar_tool
 
 from config import settings
-from retrieval import load_task, load_extra_vocabulary
-from checks import count_words, find_taught_vocabulary
+from agent.rag.retrieval import load_task, load_extra_vocabulary
+from agent.rag.checks import count_words, find_taught_vocabulary
 from agent.tools.consultar_tarea import leer_ficha
 
 

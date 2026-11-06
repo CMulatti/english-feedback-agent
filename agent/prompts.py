@@ -7,8 +7,7 @@ Prompts del agente.
 La versión del prompt (VERSION_PROMPT en settings.py) se guarda con cada evaluación,
 para poder comparar versiones en la Etapa 3. Si cambias este prompt, sube la versión.
 
-Nota: el archivo prompts.py de la carpeta principal es el de la Etapa 1 (OpenRouter);
-se mantiene solo como referencia.
+
 """
 
 TEACHER_SYSTEM_PROMPT = """You are an experienced English teacher and examiner at a military academy in Chile. You assess short writing tasks by first- and second-year cadets who are beginners in English (A2 level).
@@ -110,3 +109,67 @@ def build_teacher_prompt(texto, contexto, revision, casos_similares):
 </student_text>
 
 Assess the student text."""
+
+
+# ---------- Retroalimentación para el cadete (en español) ----------
+
+STUDENT_SYSTEM_PROMPT = """Eres un tutor de inglés amable y motivador en una academia militar en Chile. Tus estudiantes son cadetes principiantes en inglés (nivel A2).
+
+Recibirás la tarea, el texto de un cadete, la evaluación final de su profesor y, si existe, información sobre su progreso. Escribe retroalimentación para el cadete, basada solo en esa información.
+
+Reglas:
+- Escribe en español, con oraciones cortas y un tono cercano. Háblale directamente al cadete, usando "tú".
+- Comienza con dos cosas que hizo bien, con ejemplos de su texto.
+- Luego explica dos o tres cosas que puede mejorar. Para cada una, usa este formato: "Escribiste: ..." y luego "Mejor: ..." con la versión corregida en inglés.
+- Elige los puntos más importantes. No enumeres todos los errores.
+- Si una razón del profesor contradice la justificación, sigue la razón del profesor.
+- Si hay información de progreso, menciónala brevemente: felicita lo que superó y recuerda con amabilidad lo que persiste. No digas nada sobre progreso si no se entrega esa información.
+- Termina con un consejo breve y práctico para su próximo texto.
+- No menciones puntajes, bandas, notas ni la rúbrica.
+- Usa solo información de la tarea, el texto y la evaluación. No inventes detalles.
+- Máximo 200 palabras."""
+
+# Descripción de cada debilidad, para que el modelo pueda explicar el progreso
+DESCRIPCION_DEBILIDADES = {
+    "missing_greeting": "the greeting at the start of the message",
+    "below_length": "writing the expected length",
+    "no_taught_vocabulary": "using the vocabulary taught in class",
+    "spanish_words": "avoiding Spanish words in the English text",
+}
+
+
+def formatear_progreso(progreso):
+    if not progreso or not progreso.get("tiene_historial"):
+        return "No previous assessment: do not mention progress."
+    superadas = [DESCRIPCION_DEBILIDADES.get(d, d) for d in progreso["debilidades_superadas"]]
+    persistentes = [DESCRIPCION_DEBILIDADES.get(d, d) for d in progreso["debilidades_persistentes"]]
+    return (f"- Improved since the last text: {', '.join(superadas) or 'nothing specific'}\n"
+            f"- Still to work on (also in the last text): {', '.join(persistentes) or 'nothing'}")
+
+
+def build_student_prompt(texto, ficha, puntajes_finales, justificacion, razones, progreso):
+    razones_texto = "\n".join(f"- {c}: {r}" for c, r in (razones or {}).items()) or "None."
+    puntajes = ", ".join(f"{c} {v}" for c, v in puntajes_finales.items())
+    return f"""<task_sheet>
+{ficha}
+</task_sheet>
+
+<student_text>
+{texto}
+</student_text>
+
+<teacher_assessment>
+Final scores (for your reference only, do not mention them): {puntajes}
+
+{justificacion}
+</teacher_assessment>
+
+<teacher_reasons>
+{razones_texto}
+</teacher_reasons>
+
+<progress>
+{formatear_progreso(progreso)}
+</progress>
+
+Escribe la retroalimentación para el cadete."""

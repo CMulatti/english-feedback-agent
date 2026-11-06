@@ -9,10 +9,7 @@ necesaria para evaluar el texto de un estudiante en una tarea específica.
   y las muestras de referencia (benchmarks) de esa tarea.
 """
 
-from pathlib import Path
-
-# Ruta a la carpeta data/, ubicada junto a este archivo
-DATA_DIR = Path(__file__).parent / "data"
+from config.settings import DATA_DIR
 
 
 def read_file(path):

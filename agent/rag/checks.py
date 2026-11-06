@@ -9,7 +9,7 @@ que el LLM recibirá como evidencia:
 - Vocabulario enseñado que aparece en el texto del estudiante.
 """
 
-from retrieval import get_field, load_task, load_extra_vocabulary
+from agent.rag.retrieval import get_field, load_task, load_extra_vocabulary
 
 
 # ---------- Funciones auxiliares ----------

@@ -19,7 +19,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.tools import tool
 
 from config import settings
-from retrieval import retrieve_context
+from agent.rag.retrieval import retrieve_context
 from agent.llm import crear_llm, invocar_llm, nombre_modelo
 from agent.observability import registrar_tool, registrar_evento
 from agent.prompts import TEACHER_SYSTEM_PROMPT, build_teacher_prompt

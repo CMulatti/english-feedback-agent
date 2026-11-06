@@ -12,8 +12,8 @@ from langchain_core.tools import tool
 from agent.observability import registrar_tool
 
 from config.settings import TASKS_DIR
-from retrieval import get_field
-from checks import get_section, get_task_vocabulary
+from agent.rag.retrieval import get_field
+from agent.rag.checks import get_section, get_task_vocabulary
 
 
 # ---------- Funciones auxiliares ----------

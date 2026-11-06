@@ -6,7 +6,7 @@ from agent.tools import evaluar_texto as modulo
 from agent.tools.evaluar_texto import evaluar_texto, leer_puntajes
 from agent.tools.revisar_texto import revisar
 from agent.prompts import build_teacher_prompt
-from retrieval import retrieve_context
+from agent.rag.retrieval import retrieve_context
 from tests.fakes import LLMFalso
 
 TEXTO = "Hi Jim,\nI wake up at 6.00 am and I have breakfast in the mess hall."

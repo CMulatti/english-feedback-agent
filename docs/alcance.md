@@ -1,5 +1,7 @@
 # Alcance del agente (Etapa 2)
 
+Resumen de referencia para no perder el panorama general durante el desarrollo.
+
 ## Propósito
 
 Un agente que asiste al profesor de inglés a procesar textos de cadetes: evalúa cada texto con la rúbrica de Cambridge y los criterios de la Academia, decide qué necesita cada caso, recuerda el historial de cada cadete y responde preguntas del profesor. **El agente prepara; el profesor decide.**
@@ -10,7 +12,7 @@ Uso principal: evaluación de textos escritos en pruebas, donde el estudiante no
 
 - Revisar el texto con código: extensión, vocabulario enseñado, saludo, idioma e instrucciones sospechosas.
 - Evaluar el texto 3 veces con el LLM (RAG por tarea) y proponer la mediana de los puntajes.
-- Decidir una acción según reglas priorizadas (planner).
+- Decidir cómo debe revisarse cada texto según reglas priorizadas, y recomendar refuerzos para el cadete (planner).
 - Consultar el historial del cadete y detectar debilidades recurrentes.
 - Buscar por significado en los criterios y en casos anteriores corregidos por profesores.
 - Responder preguntas abiertas del profesor en un chat, con botones de preguntas sugeridas.
@@ -49,16 +51,23 @@ Todo en inglés (prompts, evaluación, chat, memoria semántica), excepto la ret
 | 6 | `guardar_evaluacion` | Escritura | Cadete, tarea, puntajes propuestos y finales, razones, acción | Confirmación (SQLite + Chroma) |
 | 7 | `generar_retroalimentacion` | Escritura (LLM) | `texto`, evaluación final, `task_id` | Retroalimentación en español |
 
-## Reglas del planner (en orden de prioridad)
+## Planner
+
+**Acción de revisión** (una sola, en orden de prioridad):
 
 | # | Condición | Acción |
 |---|---|---|
 | 1 | Texto vacío o con menos del 20% de las palabras mínimas | `escalar_profesor` |
 | 2 | Más del 30% de las palabras en español, o instrucciones al sistema | `escalar_profesor` |
-| 3 | Las 3 evaluaciones difieren en más de 0,5 banda en algún criterio | `caso_dudoso` |
-| 4 | Debilidad recurrente (3 veces, contando el texto actual) | `recomendar_refuerzo` |
-| 5 | Puntaje total menor que 9 de 15 | `priorizar_revision` |
-| 6 | Caso estándar | `revision_rapida` |
+| 3 | Las corridas difieren en 1 banda o más en algún criterio, o menos de 2 corridas válidas | `caso_dudoso` |
+| 4 | Puntaje total menor que 9 de 15 | `priorizar_revision` |
+| 5 | Caso estándar | `revision_rapida` |
+
+**Recomendaciones** (se muestran siempre, sin competir con la acción):
+
+| Condición | Recomendación |
+|---|---|
+| Debilidad recurrente (3 veces, contando el texto actual) | `recomendar_refuerzo` |
 
 Todas las acciones terminan en la revisión del profesor.
 
@@ -70,7 +79,7 @@ Todas las acciones terminan en la revisión del profesor.
 ## Escenarios de la demo
 
 1. **Caso estándar:** se evalúa, el profesor confirma, se guarda.
-2. **Memoria:** tercer saludo faltante de CDT-004 → recomendar refuerzo; preguntas de seguimiento en el chat.
+2. **Memoria:** tercer saludo faltante de CDT-004 → recomendación de refuerzo, visible cualquiera sea la acción; preguntas de seguimiento en el chat.
 3. **Adaptación:** una corrección del profesor se guarda y aparece como ejemplo en el siguiente texto similar.
 4. **Escalamiento:** las 3 evaluaciones no coinciden → caso dudoso.
 
@@ -88,14 +97,14 @@ Para medir precisión, consistencia y frecuencia de errores, el agente registrar
 - **Puntaje propuesto y puntaje final del profesor** (precisión).
 - **Modelo y versión del prompt** en cada evaluación, para comparar cambios.
 - **Tipos de error con códigos fijos:** `missing_scores`, `truncated`, `empty_response`, `rate_limit`, `wrong_language`, entre otros.
-- Se mantienen `evaluation/` y `evaluate.py` como conjunto de prueba controlado.
+- Se mantiene `evaluation/` como conjunto de prueba controlado, que nunca se usa en la demo ni en la base de conocimiento.
 
 ## Métricas de éxito
 
 - Evaluación de un caso estándar con 3 corridas en menos de 90 segundos (medir con Gemini).
 - Al menos 70% de los puntajes propuestos a 0,5 banda o menos de la profesora en los textos de `evaluation/`.
-- 100% de los textos con desacuerdo mayor a 0,5 banda marcados como caso dudoso.
-- 6 de 6 reglas del planner con test aprobado; 12 o más tests aprobados en total.
+- 100% de los textos con desacuerdo de 1 banda o más marcados como caso dudoso.
+- Todas las reglas y recomendaciones del planner con test aprobado; 12 o más tests aprobados en total.
 - La pregunta sobre el saludo recupera la sección "Format" de los criterios entre los 2 primeros resultados.
 - 0 puntajes guardados o retroalimentaciones generadas sin confirmación del profesor.
 - Retroalimentación al cadete en español, en 200 palabras o menos.

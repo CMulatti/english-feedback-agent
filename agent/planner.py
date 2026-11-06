@@ -1,11 +1,18 @@
 """
 Planner: decide qué hacer con un texto, según las reglas de docs/reglas.md.
 
+El planner responde dos preguntas distintas:
+- ¿Cómo debe revisar el profesor este texto? Una sola acción, según 5 reglas en orden
+  de prioridad: se detiene en la primera que se cumple (cada regla termina en return).
+- ¿Qué necesita este cadete? Recomendaciones (cero o más) que se muestran siempre,
+  sin competir con la acción: por ejemplo, reforzar una debilidad recurrente.
+
+Funciones:
 - construir_estado(): el "traductor". Toma lo que devuelven las tools y arma el estado,
   un diccionario simple con los hechos que necesitan las reglas.
-- decidir_accion(): aplica las 6 reglas en orden de prioridad y se detiene en la
-  primera que se cumple (cada regla termina en return).
-- revisar_antes_de_evaluar(): aplica solo las reglas 1 y 2, que no necesitan al LLM.
+- revisar_antes_de_evaluar(): reglas 1 y 2, que no necesitan al LLM.
+- decidir_accion(): las 5 reglas de revisión.
+- recomendar(): las recomendaciones para el cadete.
 
 Son funciones puras: no llaman al LLM ni a la base de datos. Con los mismos datos,
 siempre dan el mismo resultado (son deterministas), por eso son fáciles de probar.
@@ -80,13 +87,13 @@ def revisar_antes_de_evaluar(estado):
 
 
 def decidir_accion(estado):
-    """Aplica las 6 reglas en orden de prioridad. Necesita el estado completo (con evaluación)."""
+    """Aplica las 5 reglas de revisión en orden de prioridad. Necesita el estado completo."""
     # Reglas 1 y 2
     accion = revisar_antes_de_evaluar(estado)
     if accion:
         return accion
 
-    # Regla 3: las corridas no coinciden, o hubo muy pocas corridas válidas
+    # Regla 3: las corridas no coinciden (1 banda o más), o hubo muy pocas corridas válidas
     if estado["corridas_validas"] < settings.MIN_CORRIDAS_VALIDAS:
         return Accion("caso_dudoso", "pocas_corridas",
                       f"Only {estado['corridas_validas']} valid assessment run(s): "
@@ -97,16 +104,25 @@ def decidir_accion(estado):
         return Accion("caso_dudoso", "desacuerdo",
                       f"The assessment runs disagree on: {detalle}.")
 
-    # Regla 4: una debilidad aparece por tercera vez (o más)
-    if estado["debilidades_recurrentes"]:
-        detalle = ", ".join(f"{d} ({n} times)" for d, n in estado["debilidades_recurrentes"].items())
-        return Accion("recomendar_refuerzo", "debilidad_recurrente",
-                      f"Recurring weakness: {detalle}.")
-
-    # Regla 5: puntaje total bajo
+    # Regla 4: puntaje total bajo
     if estado["total"] < settings.UMBRAL_PUNTAJE_BAJO:
         return Accion("priorizar_revision", "puntaje_bajo",
                       f"Total score {estado['total']} is below {settings.UMBRAL_PUNTAJE_BAJO} out of 15.")
 
-    # Regla 6: caso estándar
+    # Regla 5: caso estándar
     return Accion("revision_rapida", "estandar", "Standard case within the criteria.")
+
+
+# ---------- Recomendaciones ----------
+
+def recomendar(estado):
+    """
+    Recomendaciones para el cadete. No compiten con la acción de revisión:
+    se muestran siempre, cualquiera sea la acción.
+    Hoy hay una: reforzar una debilidad que aparece por tercera vez (o más).
+    """
+    return [
+        {"tipo": "recomendar_refuerzo", "debilidad": debilidad, "veces": veces,
+         "razon": f"Recurring weakness: {debilidad} ({veces} times, including this text)."}
+        for debilidad, veces in estado["debilidades_recurrentes"].items()
+    ]

@@ -1,9 +1,9 @@
 """
-Tests del planner: una prueba por regla y pruebas de prioridad.
+Tests del planner: una prueba por regla, pruebas de prioridad y recomendaciones.
 No usan el LLM ni la base de datos: el planner es una función pura.
 """
 
-from agent.planner import decidir_accion, revisar_antes_de_evaluar, construir_estado
+from agent.planner import decidir_accion, revisar_antes_de_evaluar, construir_estado, recomendar
 
 
 def estado(**cambios):
@@ -51,17 +51,18 @@ def test_regla_3_pocas_corridas():
     assert (accion.tipo, accion.motivo) == ("caso_dudoso", "pocas_corridas")
 
 
-def test_regla_4_debilidad_recurrente():
-    accion = decidir_accion(estado(debilidades_recurrentes={"missing_greeting": 3}))
-    assert accion.tipo == "recomendar_refuerzo"
+def test_regla_3_diferencia_de_media_banda_no_es_desacuerdo():
+    # El desacuerdo lo calcula evaluar_texto; aquí basta con que no venga marcado
+    accion = decidir_accion(estado(rango={"Content": 0.5, "Organization": 0, "Language": 0}))
+    assert accion.tipo == "revision_rapida"
 
 
-def test_regla_5_puntaje_bajo():
+def test_regla_4_puntaje_bajo():
     accion = decidir_accion(estado(total=8.5))
     assert accion.tipo == "priorizar_revision"
 
 
-def test_regla_6_estandar():
+def test_regla_5_estandar():
     assert decidir_accion(estado()).tipo == "revision_rapida"
 
 
@@ -77,9 +78,21 @@ def test_texto_insuficiente_antes_que_idioma():
     assert accion.motivo == "texto_insuficiente"
 
 
-def test_refuerzo_antes_que_puntaje_bajo():
-    accion = decidir_accion(estado(debilidades_recurrentes={"below_length": 3}, total=7))
-    assert accion.tipo == "recomendar_refuerzo"
+def test_debilidad_recurrente_no_cambia_la_accion():
+    accion = decidir_accion(estado(debilidades_recurrentes={"missing_greeting": 3}))
+    assert accion.tipo == "revision_rapida"
+
+
+# ---------- Recomendaciones ----------
+
+def test_recomendacion_de_refuerzo():
+    recomendaciones = recomendar(estado(debilidades_recurrentes={"missing_greeting": 3}))
+    assert recomendaciones[0]["tipo"] == "recomendar_refuerzo"
+    assert recomendaciones[0]["debilidad"] == "missing_greeting"
+
+
+def test_sin_recomendaciones():
+    assert recomendar(estado()) == []
 
 
 # ---------- Antes de evaluar y construcción del estado ----------

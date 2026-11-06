@@ -9,20 +9,34 @@
   prevent band 5 if the text meets the band descriptor overall.
 
 ## Content
-- All essential content points of the task must be answered and
-  clearly developed for the reader.
+
+### How to check the content points
+- Go through the content points of the task sheet one by one. Points can be
+  answered in any order.
 - A content point can be answered implicitly, as long as the reader can
   clearly understand the writer's position.
-- A text can omit one accessory content point and still reach band 5,
-  as long as the essential points are fully developed.
-- Omitting more than one accessory point, or any essential point,
+
+### Band 5
+- Band 5 requires all essential points to be answered and clearly
+  developed for the reader.
+- A text can omit one accessory content point and still reach band 5.
+  Omitting more than one accessory point, or any essential point,
   prevents band 5.
-- Content points can be answered in any order.
-- Length is assessed through Content: texts below the expected length
-  usually cannot develop all content points.
 - A text below 80% of the minimum expected length cannot reach band 5.
   A text at 80% or more that is well developed can reach band 5.
-  Texts above the maximum expected length are not penalized.
+
+### Lower bands
+- Missing points lower Content gradually. If one essential point is missing
+  but the others are clearly communicated, the reader is on the whole
+  informed: band 3.
+- Band 2 when several essential points are missing or poorly communicated.
+- Band 1 only when most of the content is irrelevant or the task is
+  misinterpreted.
+
+### Length
+- A short text is assessed by what it communicates: length alone does not
+  lower Content below band 3.
+- Texts above the maximum expected length are not penalized.
 
 ## Language
 - Vocabulary is assessed against the course, not only against general A2:

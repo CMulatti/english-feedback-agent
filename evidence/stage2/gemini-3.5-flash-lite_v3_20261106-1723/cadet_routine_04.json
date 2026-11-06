@@ -1,0 +1,95 @@
+{
+  "texto": "Hi Jim,\nI wake up at 6.00 am, I take a shower and dress up for line up in the Alpatacal Courtyard and take breakfast in the mess hall. After that, I have classes from 8.00 to 1300. Then, I line up in the Alpatacal Courtyard and have lunch in the Mess Hall. Then, I go to the classroom and have lessons. After that, I go to the Alpatacal Courtyard and have dinner. Next, I study in the library and go to bed in the barracks at 10.00 pm.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 89,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.89,
+    "estado_extension": "below_minimum",
+    "vocabulario_encontrado": [
+      "wake up",
+      "line up",
+      "have lunch",
+      "have dinner",
+      "study",
+      "barracks",
+      "mess hall",
+      "alpatacal courtyard",
+      "classroom",
+      "library"
+    ],
+    "tiene_saludo": true,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Language: system 4.5 -> teacher 3 (Reason: Few errors, but the same basic structures are repeated throughout; limited range corresponds to band 3, not 5.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-3"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 5.0,
+        "Language": 5.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 5.0,
+        "Language": 5.0
+      }
+    ],
+    "mediana": {
+      "Content": 3.0,
+      "Organization": 5.0,
+      "Language": 5.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 2.0,
+      "Language": 2.0
+    },
+    "criterios_en_desacuerdo": [
+      "Organization",
+      "Language"
+    ],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The student covers essential point 1 by describing the daily routine step-by-step from waking up to going to bed (\"I wake up at 6.00 am... and go to bed in the barracks at 10.00 pm\"). Essential point 2 is partially addressed as it mentions activities like classes, lunch, and studying, but it fails to state how often these are done. Accessory point 3 (free time) is omitted. Accessory point 4 (opinion on whether life in the Military Academy is hard) is also omitted. Because an essential point is missing (frequency of activities) and an accessory point is missing, the target reader is not fully informed, though they are on the whole informed about the routine. The text is 89 words, which is 89% of the minimum expected length (above 80%), so length does not penalize the score. This matches band 3: minor omissions are present and the target reader is on the whole informed.\n\nOrganization: The text follows the expected format by including a greeting (\"Hi Jim\") and is structured as a reply. However, there is no ending, which is noted as missing. The sentences are connected and coherent using basic linking words and time references (\"After that\", \"Then\", \"Next\"), making the progression of the day clear and easy to follow. Because the greeting is present, there is no penalty to Organization. This matches band 5: text is connected and coherent, using basic linking words and a limited number of cohesive devices.\n\nLanguage: The student uses a good variety of taught vocabulary from the course (wake up, line up, Alpatacal Courtyard, mess hall, classes, classroom, library, barracks). Simple grammatical forms (present simple) are used with a good degree of control (\"I wake up\", \"I have classes\", \"I study\"). Errors are isolated, such as \"dress up\" instead of \"get dressed\" or \"put on my uniform\" and \"take breakfast\" instead of \"have breakfast\", but meaning is always clear. The text demonstrates both control and a reasonable range of everyday and military vocabulary. This matches band 5: uses everyday vocabulary generally appropriately and uses simple grammatical forms with a good degree of control.\n\n## Target grammar\nThe student demonstrates good control of the present simple tense to describe habitual actions and routines, using correct subject-verb structures such as \"I wake up at 6.00 am\" and \"I study in the library\".\n\nScores: Content 3 | Organization 5 | Language 5",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "caso_dudoso",
+    "motivo": "desacuerdo",
+    "razon": "The assessment runs disagree on: Organization (runs differ by 2.0 bands), Language (runs differ by 2.0 bands)."
+  },
+  "duracion_s": 7.9
+}

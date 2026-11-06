@@ -1,0 +1,87 @@
+{
+  "texto": "Hello Jim,\nI Wake up 6am. Later, I take shower and Brush my hair and dress up. Later, I go to the mess hall and eat Brew with butter and tea. After that, Practice sport with my friends, I love run in the Military Academy. After that, study in the library at 7pm. Later, I go speed in my bed in the barracks at 8pm.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 65,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.65,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "wake up",
+      "study",
+      "barracks",
+      "mess hall",
+      "library"
+    ],
+    "tiene_saludo": true,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      }
+    ],
+    "mediana": {
+      "Content": 3.0,
+      "Organization": 3.0,
+      "Language": 3.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 0.0,
+      "Language": 0.0
+    },
+    "criterios_en_desacuerdo": [],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The text covers parts of the daily routine, mentioning waking up, getting dressed, eating breakfast, practicing sport, studying, and going to bed in the barracks. However, it lacks clear detail on the frequency of activities, and free time is not clearly addressed. The opinion point (\"is life in the Military Academy hard?\") is omitted. Furthermore, at 65 words, the text is well below 80% of the minimum expected length (100 words), which prevents it from reaching band 5. The reader is on the whole informed about the general routine, but with noticeable omissions: band 3.\nOrganization: The text opens with a correct greeting (\"Hello Jim\"), following the format of a reply. It uses basic linking words and time references to connect the sequence of events (\"Later\", \"After that\"), making the flow of ideas understandable. Punctuation is generally acceptable, though some sentences run together or lack articles. This meets the criteria for band 3.\nLanguage: The student uses basic everyday vocabulary and includes some taught vocabulary from the course (wake up, mess hall, library, barracks, Military Academy). Simple grammatical forms in the present simple are attempted, but control is limited. There are several noticeable errors, such as missing subjects (\"Practice sport\", \"study in the library\"), missing articles (\"take shower\"), incorrect prepositions or verbs (\"go speed in my bed\"), and spelling/vocabulary errors (\"Brew\" instead of bread, \"dress up\" instead of get dressed, capitalization of \"Wake\", \"Brush\"). Meaning can still be determined for the most part, corresponding to band 3.\n\n## Target grammar\nThe student attempts to use the present simple and time expressions (\"Later\", \"After that\", \"at 7pm\"), but control is inconsistent and subjects are frequently omitted (e.g., \"Practice sport with my friends\", \"study in the library\"). \n\nScores: Content 3 | Organization 3 | Language 3",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "revision_rapida",
+    "motivo": "estandar",
+    "razon": "Standard case within the criteria."
+  },
+  "duracion_s": 10.3
+}

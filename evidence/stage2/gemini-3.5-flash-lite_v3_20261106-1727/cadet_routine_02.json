@@ -1,0 +1,95 @@
+{
+  "texto": "get up at 5:45 A.M. a take shower, get dressed, after that form up in the alpatacal cordid and go to the mess hall where the cadet have a breakfast. After I go to classroom where have classes at 8.00. Then, form up at 1.00 for mess hall to have lunch with the company. Then do sports or classes from 15.00 to 18.00. In the night, go to barracks and sleep.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 71,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.71,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "get dressed",
+      "form up",
+      "have lunch",
+      "do sports",
+      "barracks",
+      "mess hall",
+      "classroom",
+      "cadet"
+    ],
+    "tiene_saludo": false,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "missing_greeting",
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 1.0,
+        "Organization": 1.5,
+        "Language": 1.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 2.5,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 2.5,
+        "Language": 3.0
+      }
+    ],
+    "mediana": {
+      "Content": 3.0,
+      "Organization": 2.5,
+      "Language": 3.0
+    },
+    "rango": {
+      "Content": 2.0,
+      "Organization": 1.0,
+      "Language": 2.0
+    },
+    "criterios_en_desacuerdo": [
+      "Content",
+      "Organization",
+      "Language"
+    ],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The student describes the daily routine from waking up at 5:45 A.M. to sleeping in the barracks at night, answering essential point 1 (daily routine). For essential point 2, the student mentions activities such as having breakfast, having classes, and doing sports, but does not state how often these occur, as frequency is not clear from the context. Accessory point 3 (free time) is omitted. Accessory point 4 (opinion on whether life in the Military Academy is hard) is also omitted. The text is 71 words long, which is below 80% of the minimum expected length of 100 words. Because essential point 2 is not fully communicated and accessory points are omitted, the target reader is on the whole informed about the routine but lacks information on the rest of the task. This corresponds to band 3.\nOrganization: The text is connected using basic, high-frequency linking words and time references such as \"after that\", \"After\", and \"Then\". Punctuation is used to separate sentences, although the student omits subjects throughout. However, there is no greeting, which lowers the Organization score by half a band from band 3 to band 2.5. The ending is also missing, though it does not lower the score.\nLanguage: The student uses everyday vocabulary reasonably appropriately, including taught vocabulary such as \"get dressed\", \"form up\", \"mess hall\", \"cadet\", \"classroom\", \"company\", and \"barracks\". Simple grammatical forms are used with some degree of control, but subjects are consistently omitted in clauses (e.g., \"get up at 5:45 A.M.\", \"a take shower\", \"where have classes\", \"Then do sports\", \"go to barracks\"), and there is a spelling error in \"cordid\" (courtyard). Meaning can still be determined. This matches band 3.\n\n## Target grammar\nThe student uses the present simple to describe the daily routine, but omits subjects in almost every clause (e.g., \"get up at 5:45 A.M. a take shower, get dressed\", \"Then do sports\"), showing only limited control of simple sentence structures.\n\nScores: Content 3 | Organization 2.5 | Language 3",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "caso_dudoso",
+    "motivo": "desacuerdo",
+    "razon": "The assessment runs disagree on: Content (runs differ by 2.0 bands), Organization (runs differ by 1.0 bands), Language (runs differ by 2.0 bands)."
+  },
+  "duracion_s": 23.3
+}

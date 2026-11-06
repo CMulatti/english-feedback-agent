@@ -1,0 +1,91 @@
+{
+  "texto": "Hello Jim,\nMy routine in the Academy starts very early in the morning. Every day, I wake up at 06:00 am. I take a fast shower, then I put on my army combat uniform and go to the Alpatacal Courtyard for line up with my comrades. We have to go to breakfast in the mess hall at about 06:40 am. After that, I have classes from 8 am until 1 pm. I'm very tired during the day but later I have lunch and athletics. I love it so much. After that, in the afternoon we go to the mess hall again for dinner. Finally, I have to go to study one more time until the night. Later we have to form up in the formation are and listen the instructions of my lieutenant or brigadier and go to sleep in the barracks. Tomorrow is a new day again.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 148,
+    "min_palabras": 100,
+    "porcentaje_minimo": 1.48,
+    "estado_extension": "within_or_above",
+    "vocabulario_encontrado": [
+      "wake up",
+      "form up",
+      "line up",
+      "have lunch",
+      "study",
+      "barracks",
+      "mess hall",
+      "alpatacal courtyard",
+      "army combat uniform"
+    ],
+    "tiene_saludo": true,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": []
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Language: system 4.5 -> teacher 3 (Reason: Few errors, but the same basic structures are repeated throughout; limited range corresponds to band 3, not 5.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-3"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 5.0,
+        "Organization": 5.0,
+        "Language": 4.0
+      },
+      {
+        "Content": 5.0,
+        "Organization": 5.0,
+        "Language": 5.0
+      },
+      {
+        "Content": 5.0,
+        "Organization": 5.0,
+        "Language": 5.0
+      }
+    ],
+    "mediana": {
+      "Content": 5.0,
+      "Organization": 5.0,
+      "Language": 5.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 0.0,
+      "Language": 1.0
+    },
+    "criterios_en_desacuerdo": [
+      "Language"
+    ],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The student addresses all essential and accessory content points from the task sheet. Point 1 (daily routine) is thoroughly covered from waking up at 06:00 to going to sleep in the barracks. Point 2 (activities and how often) is answered through the use of the frequency expression \"Every day\" and specific parts of the routine like classes and athletics. Point 3 (free time) is present implicitly through mentions of activities like lunch and athletics. Point 4 (opinion: is life in the Military Academy hard?) is addressed by stating \"I'm very tired during the day\" and mentioning the demanding schedule, fulfilling the opinion point. The target reader is fully informed. Band: 5.\n\nOrganization: The text follows the expected format of a reply to a message, including a proper greeting (\"Hello Jim\") and a natural ending (\"Tomorrow is a new day again.\"). The text is connected and coherent, using basic linking words and cohesive devices (\"then\", \"After that\", \"later\", \"Finally\") to sequence the events of the day clearly. Punctuation and sentence boundaries are well controlled. Band: 5.\n\nLanguage: The student uses everyday and taught vocabulary appropriately (e.g., \"wake up\", \"army combat uniform\", \"Alpatacal Courtyard\", \"line up\", \"mess hall\", \"form up\", \"barracks\"). Simple grammatical forms (present simple) are used with a good degree of control (\"I wake up\", \"I put on\", \"we have to go\"). There are a few minor spelling or local errors (\"Courtyard\" is spelled correctly here, but \"formation are\" instead of \"formation area\", and \"listen the instructions\" instead of \"listen to the instructions\"), but meaning is never impaired. The text shows both control and a reasonable range of vocabulary and connectors. Band: 5.\n\n## Target grammar\nThe student demonstrates good control of the present simple tense and time expressions, using them to describe habitual actions (e.g., \"Every day, I wake up at 06:00 am\", \"I put on my army combat uniform\"). Frequency is also clearly conveyed through expressions like \"Every day\" and \"one more time\".\n\nScores: Content 5 | Organization 5 | Language 5",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "caso_dudoso",
+    "motivo": "desacuerdo",
+    "razon": "The assessment runs disagree on: Language (runs differ by 1.0 bands)."
+  },
+  "duracion_s": 9.7
+}

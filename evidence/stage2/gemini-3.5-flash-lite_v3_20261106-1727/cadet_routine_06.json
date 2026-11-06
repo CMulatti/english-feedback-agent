@@ -1,0 +1,87 @@
+{
+  "texto": "Hello Jim,\nI Wake up 6am. Later, I take shower and Brush my hair and dress up. Later, I go to the mess hall and eat Brew with butter and tea. After that, Practice sport with my friends, I love run in the Military Academy. After that, study in the library at 7pm. Later, I go speed in my bed in the barracks at 8pm.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 65,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.65,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "wake up",
+      "study",
+      "barracks",
+      "mess hall",
+      "library"
+    ],
+    "tiene_saludo": true,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      }
+    ],
+    "mediana": {
+      "Content": 3.0,
+      "Organization": 3.0,
+      "Language": 3.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 0.0,
+      "Language": 0.0
+    },
+    "criterios_en_desacuerdo": [],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The student mentions waking up (\"I Wake up 6am\"), breakfast (\"go to the mess hall and eat Brew with butter and tea\"), sports (\"Practice sport with my friends\"), studying (\"study in the library at 7pm\"), and going to sleep (\"go speed in my bed in the barracks at 8pm\"), so the essential point of daily routine is covered through a sequence of activities. For activities and how often, the student does not mention frequency (no adverbs or expressions of frequency are used). The accessory point of free time is not mentioned. The opinion on whether life in the Military Academy is hard is not mentioned, though the student expresses affection for running (\"I love run in the Military Academy\"). The word count is 65 words, which is below 80% of the minimum expected length of 100 words. Because an essential point (activities and how often) is missing, and the text falls short of developing all points due to its short length, the target reader is only partly informed, corresponding to band 3.\n\nOrganization: The text opens with an appropriate greeting (\"Hello Jim,\") and uses basic connectors and time references to link the sentences (\"Later\", \"After that\"). Punctuation and sentence separation are generally clear, although the greeting has a capital letter on \"Wake\". The format of a reply to Jim is followed, so no penalty applies for the greeting. The text is connected using basic, high-frequency linking words, which matches band 3.\n\nLanguage: The student uses taught vocabulary from the course, including \"wake up\", \"mess hall\", \"study\", \"library\", and \"barracks\". Simple grammatical forms (present simple) are used, but control is limited: subjects are missing in several clauses (\"take shower and Brush my hair and dress up\", \"Practice sport with my friends\", \"study in the library\"), and there are lexical and spelling errors (\"Brew\" instead of bread, \"go speed\" instead of go to sleep, \"love run\" instead of love running). Errors are noticeable and occasionally impede meaning, but basic vocabulary is used reasonably appropriately. This corresponds to band 3.\n\n## Target grammar\nThe student attempts to use the present simple with subjects in some sentences (\"I Wake up 6am\", \"I go to the mess hall\"), but frequently omits subjects in subsequent clauses (\"take shower and Brush my hair\", \"Practice sport\", \"study in the library\"). There are no adverbs of frequency or frequency expressions used in the text.\n\nScores: Content 3 | Organization 3 | Language 3",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "revision_rapida",
+    "motivo": "estandar",
+    "razon": "Standard case within the criteria."
+  },
+  "duracion_s": 9.4
+}

@@ -1,0 +1,91 @@
+{
+  "texto": "get up at 5:45 A.M. a take shower, get dressed, after that form up in the alpatacal cordid and go to the mess hall where the cadet have a breakfast. After I go to classroom where have classes at 8.00. Then, form up at 1.00 for mess hall to have lunch with the company. Then do sports or classes from 15.00 to 18.00. In the night, go to barracks and sleep.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 71,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.71,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "get dressed",
+      "form up",
+      "have lunch",
+      "do sports",
+      "barracks",
+      "mess hall",
+      "classroom",
+      "cadet"
+    ],
+    "tiene_saludo": false,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "missing_greeting",
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 3.0,
+        "Organization": 2.5,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 2.5,
+        "Language": 3.0
+      },
+      {
+        "Content": 3.0,
+        "Organization": 2.5,
+        "Language": 3.0
+      }
+    ],
+    "mediana": {
+      "Content": 3.0,
+      "Organization": 2.5,
+      "Language": 3.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 0.0,
+      "Language": 0.0
+    },
+    "criterios_en_desacuerdo": [],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The student describes the daily routine from waking up to sleeping, covering the first and second essential points (daily routine and activities, with the daily frequency clear from context). However, the accessory points of free time and the opinion on whether life in the Military Academy is hard are missing. The text is 71 words long, which is below 80% of the minimum expected length of 100 words. Because an essential point is missing (opinion/hard life) and the text is short, the target reader is on the whole informed: band 3.\nOrganization: The text uses basic linking words and time references (\"after that\", \"After\", \"Then\", \"In the night\") to connect the sequence of the day. Punctuation is used to separate sentences, although the first sentence is fragmented. There is no greeting, which lowers the score by half a band per institutional criteria. The text connects basic parts with high-frequency linking words, matching band 3, reduced by half a band for the missing greeting: band 2.5.\nLanguage: The student uses some taught vocabulary correctly, including \"form up\", \"mess hall\", \"cadet\", \"classroom\", \"company\", and \"barracks\". However, control of simple grammatical forms is limited due to recurring missing subjects (\"get up at 5:45 A.M.\", \"a take shower\", \"where have classes\", \"go to barracks\"), missing articles (\"take shower\"), and verb agreement errors (\"the cadet have\"). Meaning can still be determined. The vocabulary is basic and errors are noticeable while meaning remains clear: band 3.\n\n## Target grammar\nThe student attempts the present simple tense to describe habitual actions, but struggles with control because subjects are systematically omitted at the beginning of clauses (e.g., \"get up at 5:45 A.M.\", \"a take shower\", \"go to barracks\"). \n\nScores: Content 3 | Organization 2.5 | Language 3",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v3",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "priorizar_revision",
+    "motivo": "puntaje_bajo",
+    "razon": "Total score 8.5 is below 9 out of 15."
+  },
+  "duracion_s": 15.2
+}

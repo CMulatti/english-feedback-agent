@@ -1,0 +1,90 @@
+{
+  "texto": "Hello Jim,\nI Wake up 6am. Later, I take shower and Brush my hair and dress up. Later, I go to the mess hall and eat Brew with butter and tea. After that, Practice sport with my friends, I love run in the Military Academy. After that, study in the library at 7pm. Later, I go speed in my bed in the barracks at 8pm.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 65,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.65,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "wake up",
+      "study",
+      "barracks",
+      "mess hall",
+      "library"
+    ],
+    "tiene_saludo": true,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 1.0,
+        "Organization": 3.0,
+        "Language": 2.0
+      },
+      {
+        "Content": 1.0,
+        "Organization": 3.0,
+        "Language": 3.0
+      },
+      {
+        "Content": 1.0,
+        "Organization": 2.0,
+        "Language": 2.0
+      }
+    ],
+    "mediana": {
+      "Content": 1.0,
+      "Organization": 3.0,
+      "Language": 2.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 1.0,
+      "Language": 1.0
+    },
+    "criterios_en_desacuerdo": [
+      "Organization",
+      "Language"
+    ],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The text is 65 words long, which is below 80% of the minimum expected length of 100 words. Regarding the content points, it covers part of the daily routine (\"I Wake up 6am\", \"take shower\", \"Brush my hair and dress up\"), but omits major parts of the day. For the second essential point, it mentions an activity (\"Practice sport with my friends\", \"run\"), but does not state how often. For the accessory points, it does not mention free time, and it does not give an opinion on whether life in the Military Academy is hard. The target reader is only minimally informed, which corresponds to band 1.\nOrganization: The text includes a proper greeting (\"Hello Jim,\") and follows the format of a reply. It uses basic connectors and time references such as \"Later\" and \"After that\" to connect ideas. However, sentence boundaries are sometimes affected by missing subjects and punctuation issues (\"After that, Practice sport\", \"After that, study in the library\"). Overall, the text is connected using basic, high-frequency linking words, matching band 3.\nLanguage: The student uses taught vocabulary including \"mess hall\", \"library\", \"barracks\", and \"study\", alongside basic words. Target grammar (Present simple) is attempted, but there are multiple grammatical errors and missing subjects (e.g., \"I Wake up 6am\", \"take shower\", \"dress up\", \"Practice sport\", \"study in the library\", \"go speed in my bed\" instead of go to sleep). While meaning can mostly be determined, grammatical control is limited, corresponding to band 2.\n\n## Target grammar\nThe student attempts the present simple and time references, but shows limited control due to missing subjects and incorrect verb forms. Examples include: \"I Wake up 6am\", \"take shower\", \"Practice sport with my friends\", and \"study in the library at 7pm\".\n\nScores: Content 1 | Organization 3 | Language 2",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v2",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "caso_dudoso",
+    "motivo": "desacuerdo",
+    "razon": "The assessment runs disagree on: Organization (runs differ by 1.0 bands), Language (runs differ by 1.0 bands)."
+  },
+  "duracion_s": 8.2
+}

@@ -1,0 +1,91 @@
+{
+  "texto": "get up at 5:45 A.M. a take shower, get dressed, after that form up in the alpatacal cordid and go to the mess hall where the cadet have a breakfast. After I go to classroom where have classes at 8.00. Then, form up at 1.00 for mess hall to have lunch with the company. Then do sports or classes from 15.00 to 18.00. In the night, go to barracks and sleep.",
+  "task_id": "cadet_routine",
+  "cadete_id": "EVAL",
+  "revision": {
+    "palabras": 71,
+    "min_palabras": 100,
+    "porcentaje_minimo": 0.71,
+    "estado_extension": "below_80_percent",
+    "vocabulario_encontrado": [
+      "get dressed",
+      "form up",
+      "have lunch",
+      "do sports",
+      "barracks",
+      "mess hall",
+      "classroom",
+      "cadet"
+    ],
+    "tiene_saludo": false,
+    "palabras_espanol": [],
+    "proporcion_espanol": 0.0,
+    "es_ingles": true,
+    "instrucciones_sospechosas": false,
+    "debilidades": [
+      "missing_greeting",
+      "below_length"
+    ]
+  },
+  "historial": [],
+  "progreso": {
+    "tiene_historial": false,
+    "debilidades_superadas": [],
+    "debilidades_persistentes": []
+  },
+  "recomendaciones": [],
+  "evaluado": true,
+  "correcciones_usadas": [
+    {
+      "contenido": "cadet_routine · Content: system 3 -> teacher 4 (Reason: Frequency is clear from context ('Every day' frames the whole routine); the essential point is answered.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-2"
+    },
+    {
+      "contenido": "cadet_routine · Organization: system 2.5 -> teacher 3 (Reason: 'Hi Jim!' is an informal but valid greeting; no penalty for format.) · Weaknesses: below_length",
+      "fuente": "caso",
+      "referencia": "mock-1"
+    }
+  ],
+  "evaluacion": {
+    "corridas": [
+      {
+        "Content": 1.0,
+        "Organization": 2.5,
+        "Language": 2.0
+      },
+      {
+        "Content": 1.0,
+        "Organization": 2.5,
+        "Language": 2.0
+      },
+      {
+        "Content": 1.0,
+        "Organization": 2.0,
+        "Language": 2.0
+      }
+    ],
+    "mediana": {
+      "Content": 1.0,
+      "Organization": 2.5,
+      "Language": 2.0
+    },
+    "rango": {
+      "Content": 0.0,
+      "Organization": 0.5,
+      "Language": 0.0
+    },
+    "criterios_en_desacuerdo": [],
+    "corridas_validas": 3,
+    "justificacion": "## Justification\nContent: The text describes the daily routine from waking up to sleeping, covering essential point 1 (daily routine). It mentions activities such as having breakfast, classes, lunch, and sports, but it does not specify how often these activities are done, so essential point 2 (activities and how often) is missing. Accessories points 3 (free time) and 4 (opinion: is life in the Military Academy hard?) are not mentioned. Furthermore, the word count is 71 words, which is below 80% of the minimum expected length (100 words), meaning the text is too short to fully develop the content points. The target reader is minimally informed, which corresponds to band 1.\nOrganization: The text uses basic linking words and time references (\"after that\", \"After\", \"Then\", \"In the night\"), which connect the sentences in a chronological sequence. However, there is no greeting, which is required for a reply to Jim, and lowers the Organization score by half a band. Punctuation and sentence structure are basic, and some ideas are fragmented by missing subjects. This matches band 3, lowered by half a band for the missing greeting, resulting in 2.5.\nLanguage: The text uses present simple and includes taught vocabulary (form up, mess hall, cadet, classroom, company, barracks, sports). However, control of simple grammatical forms is weak due to frequent missing subjects (e.g., \"get up at 5:45 A.M. a take shower\", \"where have classes\", \"Then do sports\"). There are also errors such as \"a take shower\" (missing article) and spelling errors in taught vocabulary (\"alpatacal cordid\" instead of \"Alpatacal Courtyard\"). Meaning can still be determined. The text shares features of bands 1 and 3, which corresponds to band 2.\n\n## Target grammar\nThe student attempts to use the present simple and sequence connectors, but struggles with grammatical control due to missing subjects and incorrect verb forms in almost every clause (e.g., \"a take shower\", \"where have classes\", \"Then do sports\").\n\nScores: Content 1 | Organization 2.5 | Language 2",
+    "modelo": "gemini-3.5-flash-lite",
+    "version_prompt": "v2",
+    "errores": []
+  },
+  "accion": {
+    "tipo": "priorizar_revision",
+    "motivo": "puntaje_bajo",
+    "razon": "Total score 5.5 is below 9 out of 15."
+  },
+  "duracion_s": 13.6
+}

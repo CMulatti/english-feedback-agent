@@ -1,7 +1,10 @@
 """
 Registro de ejecución (observabilidad, preparado para la Etapa 3).
 
-Cada llamada a una tool o al LLM guarda una fila en la tabla 'eventos' de SQLite:
+Se guarda en su propia base de datos (data/eventos.db), separada de la memoria del agente:
+así, reiniciar las memorias para una demo o una evaluación no borra el registro.
+
+Cada llamada a una tool o al LLM guarda una fila en la tabla 'eventos':
 cuándo ocurrió, qué se ejecutó, cuánto tardó, cuántos tokens usó y si hubo un error.
 
 Todo pasa por dos piezas:
@@ -22,7 +25,7 @@ SESION_ID = uuid.uuid4().hex[:8]
 
 
 def crear_tabla_eventos():
-    with sqlite3.connect(settings.DB_PATH) as conexion:
+    with sqlite3.connect(settings.EVENTOS_DB_PATH) as conexion:
         conexion.execute("""
             CREATE TABLE IF NOT EXISTS eventos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,7 +48,7 @@ def registrar_evento(componente, nombre, resultado, duracion_ms=None, modelo=Non
                      tokens_entrada=None, tokens_salida=None, tipo_error=None, detalle=None):
     """Guarda un evento. componente es 'tool' o 'llm'; resultado es 'ok' o 'error'."""
     crear_tabla_eventos()
-    with sqlite3.connect(settings.DB_PATH) as conexion:
+    with sqlite3.connect(settings.EVENTOS_DB_PATH) as conexion:
         conexion.execute("""
             INSERT INTO eventos (fecha_hora, sesion_id, componente, nombre, modelo, duracion_ms,
                                  tokens_entrada, tokens_salida, resultado, tipo_error, detalle)
@@ -58,7 +61,7 @@ def registrar_evento(componente, nombre, resultado, duracion_ms=None, modelo=Non
 def obtener_eventos(limite=20):
     """Devuelve los últimos eventos registrados (para revisar o probar)."""
     crear_tabla_eventos()
-    with sqlite3.connect(settings.DB_PATH) as conexion:
+    with sqlite3.connect(settings.EVENTOS_DB_PATH) as conexion:
         conexion.row_factory = sqlite3.Row
         filas = conexion.execute(
             "SELECT * FROM eventos ORDER BY id DESC LIMIT ?", (limite,)).fetchall()

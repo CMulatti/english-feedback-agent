@@ -15,12 +15,13 @@ DATA_DIR = BASE_DIR / "data"
 TASKS_DIR = DATA_DIR / "tasks"
 VOCABULARY_DIR = DATA_DIR / "vocabulary"
 SAMPLES_DIR = DATA_DIR / "samples"
-DB_PATH = DATA_DIR / "agent.db"          # memoria de largo plazo (SQLite)
+DB_PATH = DATA_DIR / "agent.db"          # memoria de largo plazo (SQLite); se reinicia con seed_data
+EVENTOS_DB_PATH = DATA_DIR / "eventos.db" # registro de ejecución (Etapa 3); NO se reinicia
 CHROMA_DIR = DATA_DIR / "chroma_db"      # memoria semántica (Chroma)
 
 # ---------- Evaluación ----------
 N_EVALUACIONES = 3        # corridas por texto
-VERSION_PROMPT = "v3"     # se guarda con cada evaluación (Etapa 3)
+VERSION_PROMPT = "v2"     # se guarda con cada evaluación (Etapa 3)
 
 # ---------- Reglas del planner (ver docs/reglas.md) ----------
 UMBRAL_TEXTO_MINIMO = 0.2     # regla 1: proporción del mínimo de palabras

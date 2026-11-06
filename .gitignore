@@ -3,3 +3,4 @@
 __pycache__/
 data/agent.db 
 data/chroma_db/
+data/eventos.db

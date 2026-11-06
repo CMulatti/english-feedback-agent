@@ -1,0 +1,44 @@
+[
+  {
+    "escena": "1. Standard case",
+    "descripcion": "A complete text with a greeting, from a cadet with a clean history.",
+    "cadete_id": "CDT-001",
+    "task_id": "cadet_routine",
+    "texto": "Dear Jim,\nLife in the M.A. is hard but it is a good experience. Every day I wake up at 6:00 and I put on my uniform. Then I form up with my platoon in the formation area and we go to the mess hall for breakfast. In the morning I usually have classes in the classroom. After lunch we do PT in the gym or we practice for ceremonies. I have free time on Saturday afternoon, so I play football with my friends or I call my family. At night I study in the library and I go to bed at 10 pm.\nTake care,\nCDT [NAME]"
+  },
+  {
+    "escena": "2. Memory: recurring weakness",
+    "descripcion": "CDT-004 forgets the greeting for the third time: the agent recommends reinforcement.",
+    "cadete_id": "CDT-004",
+    "task_id": "cadet_routine",
+    "texto": "Every day I wake up at 6:00 in the barracks. I make my bed and I put on my uniform. At 6:30 we form up in the formation area and after that we go to the mess hall for breakfast. In the morning I have classes of English, history and military subjects. At 1 pm I have lunch with my company. In the afternoon I do PT in the gym or we practice for the parade. Sometimes I have fireguard duty at night. Before sleep I study in the library. I think the life in the academy is hard but is good for me."
+  },
+  {
+    "escena": "3a. Adaptation: first text",
+    "descripcion": "Assess it, adjust a score with a reason and confirm: the correction is saved in the memory.",
+    "cadete_id": "CDT-005",
+    "task_id": "cadet_routine",
+    "texto": "Hello Jim,\nI wake up at 6 am. I take a shower. I put on my uniform. I go to the formation area. I go to the mess hall. I have breakfast. I go to the classroom. I have classes. I have lunch. I go to the gym. I do PT. I have dinner. I study in the library. I go to the barracks. I go to bed at 10 pm. The life in the academy is hard. I like it.\nBye,\nCDT [NAME]"
+  },
+  {
+    "escena": "3b. Adaptation: similar text",
+    "descripcion": "A similar text: the correction from 3a appears among the teacher corrections used.",
+    "cadete_id": "CDT-006",
+    "task_id": "cadet_routine",
+    "texto": "Hi Jim,\nI wake up at 6:00. I make my bed. I go to the courtyard. I form up. I go to the mess hall. I eat breakfast. I go to class. I have English. I have math. I go to lunch. I go to the gym. I train. I go to dinner. I go to the library. I study. I go to sleep. The academy is hard but good.\nTake care,\nCDT [NAME]"
+  },
+  {
+    "escena": "4. Escalation: not in English",
+    "descripcion": "A text mostly in Spanish: the agent escalates it without calling the LLM.",
+    "cadete_id": "CDT-007",
+    "task_id": "cadet_routine",
+    "texto": "Hello Jim,\nYo me levanto a las seis de la mañana y después voy al casino con mis amigos. En la tarde tengo clases y luego hago deporte en el gimnasio con mi compañía. Es muy difícil pero me gusta."
+  },
+  {
+    "escena": "5. Second task: Santiago",
+    "descripcion": "An A2+ text for the santiago_tourism task (no greeting required).",
+    "cadete_id": "CDT-010",
+    "task_id": "santiago_tourism",
+    "texto": "I see a lot of tourists in Santiago, especially in the city centre, and sometimes I help them when they are lost. In my opinion, Santiago is not the best city for tourists. It is large, crowded and more stressful than other cities, but it has interesting museums and famous landmarks. I recommend Valparaíso. Valparaíso is smaller and more colourful than Santiago, and it is near the sea. You can go on a sightseeing tour, take pictures of the hills and try the local food. It is not as expensive as Santiago and the people are very friendly. For me, Valparaíso is the most beautiful city in Chile."
+  }
+]

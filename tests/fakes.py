@@ -18,3 +18,18 @@ class LLMFalso:
         return AIMessage(content=respuesta,
                          usage_metadata={"input_tokens": 50, "output_tokens": 10,
                                          "total_tokens": 60})
+
+
+from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
+
+
+class ChatFalsoConTools(GenericFakeChatModel):
+    """
+    Modelo falso para probar el agente del chat. Devuelve, en orden, los mensajes de la
+    lista: un AIMessage con tool_calls simula que el modelo decide usar una tool.
+    bind_tools devuelve el mismo modelo, porque las respuestas ya están preparadas.
+    """
+    model: str = "chat-falso"
+
+    def bind_tools(self, tools, **kwargs):
+        return self

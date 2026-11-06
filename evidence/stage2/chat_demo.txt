@@ -1,0 +1,21 @@
+
+Teacher: How has CDT-004 progressed?
+Agent (tools: consultar_historial): CDT-004 has two previous assessments on record:
+
+1. **2026-09-01 (`weekend_email`)**:
+   - Scores: Content: 3, Language: 3, Organization: 2.5
+   - Weakness detected: `missing_greeting`
+   - Action: Quick review (no score adjustment)
+
+2. **2026-09-22 (`invitation_email`)**:
+   - Scores: Content: 2.5, Language: 3.5, Organization: 2.5
+   - Weaknesses detected: `missing_greeting`, `below_length`
+   - Action: Quick review (scores adjusted by the teacher)
+
+**Recurring weakness:** The cadet consistently struggles with including a greeting (`missing_greeting`) across both tasks.
+
+Teacher: Why is half a band deducted when there is no greeting?
+Agent (tools: buscar_contexto): According to the institutional criteria, the expected format of each task (including the greeting and ending in a reply) is assessed under **Organization**. When a task requires a greeting and it is omitted, the Organization score is lowered by half a band (`criteria.md`, Format).
+
+Teacher: And what do the criteria say about the ending?
+Agent (tools: buscar_contexto): According to the institutional criteria, a missing or weak ending does not lower the score, but it should be mentioned in the feedback (`criteria.md`, Format).

@@ -15,7 +15,7 @@ Memoria de corto plazo: la clase MemoriaConversacion guarda los mensajes de la s
 import time
 
 from langchain.agents import create_agent
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
 from config import settings
 from agent.llm import crear_llm, clasificar_error, nombre_modelo
@@ -92,6 +92,20 @@ def resumir_evaluacion(resultado):
 
 # ---------- Respuesta ----------
 
+def describir_tools_usadas(mensajes):
+    """
+    Lista las tools que el agente decidió usar, con sus argumentos,
+    por ejemplo: "consultar_historial(cadete_id=CDT-002)".
+    Mostrar los argumentos hace visible qué decidió el agente, no solo qué tool eligió.
+    """
+    descripciones = []
+    for mensaje in mensajes:
+        for llamada in getattr(mensaje, "tool_calls", None) or []:
+            argumentos = ", ".join(f"{k}={v}" for k, v in llamada["args"].items())
+            descripciones.append(f"{llamada['name']}({argumentos})")
+    return descripciones
+
+
 def responder(pregunta, memoria, evaluacion_actual=None, llm=None):
     """
     Responde una pregunta del profesor. Devuelve la respuesta y las tools que el agente usó,
@@ -121,7 +135,7 @@ def responder(pregunta, memoria, evaluacion_actual=None, llm=None):
 
     nuevos = resultado["messages"][len(mensajes):]
     respuesta = nuevos[-1].text
-    tools_usadas = [m.name for m in nuevos if isinstance(m, ToolMessage)]
+    tools_usadas = describir_tools_usadas(nuevos)
 
     # Registro: tokens sumados de todos los pasos del agente
     entrada = sum((getattr(m, "usage_metadata", None) or {}).get("input_tokens", 0) for m in nuevos)

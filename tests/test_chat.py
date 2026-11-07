@@ -27,7 +27,7 @@ def test_el_agente_usa_la_tool_elegida():
     llm = modelo(usa_tool("consultar_historial", {"cadete_id": "CDT-004"}),
                  AIMessage(content="CDT-004 has one previous assessment."))
     resultado = responder("How has CDT-004 progressed?", memoria, llm=llm)
-    assert resultado["tools_usadas"] == ["consultar_historial"]
+    assert resultado["tools_usadas"] == ["consultar_historial(cadete_id=CDT-004)"]
     assert resultado["respuesta"] == "CDT-004 has one previous assessment."
 
 
